@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="px-5 py-3">
+    <h3 class="text-center">Agregar Proyecto</h3>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type='submit'>Guardar</button>
+        <a href="/projects/" class="btn btn-dark mx-2" role="button">Cancelar</a>
+
+    </form>
+
+</div>
+
+{% endblock %}

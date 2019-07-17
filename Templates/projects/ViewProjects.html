@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="px-4">
+    <div class="d-flex justify-content-between py-3">
+        <h3>Lista de Proyectos</h3>
+        <a href="/projects/addproject" class="btn btn-dark" role="button">Agregar Proyecto</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha inicial</th>
+                <th scope="col">Fecha final</th>
+                <th scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if projects %}
+            {% for pro in projects %}
+            <tr>
+                <th scope="row">{{ pro.id }}</th>
+                <td><a href="/projects/{{ pro.id }}/tasks">{{ pro.nombre }}</a></td>
+                <td>{{ pro.fecha_ini }}</td>
+                <td>{{ pro.fecha_fin }}</td>
+                <td class="d-flex justify-content-center">
+                    <a class="btn btn-dark mx-1" href="/projects/edit/{{ pro.id }}">Editar</a>
+                    <a class="btn btn-danger mx-1" href="/projects/delete/{{ pro.id }}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center"><h3>No hay registros</h3></td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

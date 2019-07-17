@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <div class="py-3 px-4">
+        <h3>Lista de Proyectos (Seleccione para ver tareas)</h3>
+        <div class="list-group py-4">
+            {% if projects %}
+            {% for pro in projects %}
+                <a href="/projects/{{ pro.id }}/tasks" class="list-group-item list-group-item-action">{{ pro.nombre }}</a>
+            {% endfor %}
+            {% else %}
+                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">No hay registros</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

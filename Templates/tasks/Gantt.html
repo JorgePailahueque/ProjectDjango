@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <div class="card text-center">
+      <div class="card-header">
+        <h4>Proyecto {{ pro.nombre }}</h4>
+      </div>
+      {% if gantt %}
+      <div class="card-body d-flex justify-content-center">
+        {{ gantt|safe }}
+      </div>
+      {% else %}
+      <h2>No hay registros</h2>
+      {% endif %}
+    </div>
+{% endblock %}
